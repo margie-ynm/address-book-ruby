@@ -30,3 +30,34 @@ get('/contacts/:id') do
   @contact = Contact.find(id)
   erb(:contact)
 end
+
+get('/contacts/:id/email_new') do
+  id = params.fetch('id').to_i #grabbing id
+  @contact = Contact.find(id) #finding contact with id
+  erb(:email_form)
+end
+
+post('/email') do
+  address = params.fetch('address')
+  type = params.fetch('type')
+  id = params.fetch('contact_id').to_i #grabbing id
+  @contact = Contact.find(id) #finding contact with id
+  @contact.add_email({:address => address, :type => type})
+  erb(:success)
+end
+
+get('/contacts/:id/phone_new') do
+  id = params.fetch('id').to_i #grabbing id
+  @contact = Contact.find(id) #finding contact with id
+  erb(:phone_form)
+end
+
+post('/phone') do
+  area_code = params.fetch('area_code')
+  number = params.fetch('number')
+  type = params.fetch('type')
+  id = params.fetch('contact_id').to_i #grabbing id
+  @contact = Contact.find(id) #finding contact with id
+  @contact.add_phone({:area_code => area_code, :number=> number, :type => type})
+  erb(:success)
+end

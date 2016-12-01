@@ -2,5 +2,30 @@
 <h3> Job Title: <%= @contact.job_title %>  </h3>
 <h3> Company: <%= @contact.company %>  </h3>
 
+<h3>Emails:</h3>
+<ul>
+  <%@contact.emails.each do |email| %>
+  <li>Email: <%=email.fetch(:address) + "Type: " + email.fetch(:type) %></li>
+  <% end %>
+</ul>
+
+<h3>Mailing Addresses</h3>
+<ul>
+  <%@contact.mailing_address.each do |address| %>
+  <li>Street: <%=address.fetch(:street) + "City: " + address.fetch(:city) + "Zipcode: " + address.fetch(:zip)+ "Type: " + address.fetch(:type) %></li>
+  <% end %>
+</ul>
+
+<h3>Phone Numbers</h3>
+<ul>
+  <%@contact.phone_numbers.each do |phone| %>
+  <li>Area Code: <%=phone.fetch(:area_code) + "Number: " + phone.fetch(:number)+ "type: " + phone.fetch(:type) %></li>
+  <% end %>
+</ul>
+
+
+<h5> <a href="/contacts/<%= @contact.id%>/email_new">Add emails</a></h5>
+<h5> <a href="/contacts/<%= @contact.id%>/mailing_address_new">Add mailing addresses</a></h5>
+<h5> <a href="/contacts/<%= @contact.id%>/phone_new">Add phone numbers</a></h5>
 <a href="javascript:history.back()">Go Back</a>
 <a href="/">Home Page</a>
