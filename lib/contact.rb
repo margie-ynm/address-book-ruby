@@ -55,6 +55,9 @@ attr_accessor(:first_name, :last_name, :job_title, :company, :mailing_address, :
     found
   end
 
+  define_singleton_method(:clear) do
+    @@contacts = []
+  end
 end
 
 

@@ -1,0 +1,16 @@
+<h2>Add a new address</h2>
+<form action="/address" method="post">
+  <input id='contact_id' name="contact_id" type="hidden" value="<%=@contact.id()%>"
+
+  <label for="street">Street:</label>
+  <input type="text" name="street">
+  <label for="city">City:</label>
+  <input type="text" name="city">
+  <label for="state">State:</label>
+  <input type="text" name="state">
+  <label for="zip">Zipcode:</label>
+  <input type="text" name="zip">
+  <label for="type">Type:</label>
+  <input type="text" name="type">
+  <button type="submit">Add mailing address</button>
+</form>

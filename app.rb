@@ -61,3 +61,21 @@ post('/phone') do
   @contact.add_phone({:area_code => area_code, :number=> number, :type => type})
   erb(:success)
 end
+
+get('/contacts/:id/mailing_address_new') do
+  id = params.fetch('id').to_i #grabbing id
+  @contact = Contact.find(id) #finding contact with id
+  erb(:mailing_form)
+end
+
+post('/address') do
+  street = params.fetch('street')
+  city = params.fetch('city')
+  state = params.fetch('state')
+  zip = params.fetch('zip')
+  type = params.fetch('type')
+  id = params.fetch('contact_id').to_i #grabbing id
+  @contact = Contact.find(id) #finding contact with id
+  @contact.add_mailing({:street => street, :city => city, :state => state, :zip=> zip, :type => type})
+  erb(:success)
+end
