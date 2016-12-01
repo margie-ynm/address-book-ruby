@@ -1,5 +1,5 @@
 class Contact
-attr_accessor(:first_name, :last_name, :job_title, :company, :mailing_address, :phone_numbers)
+attr_accessor(:first_name, :last_name, :job_title, :company, :mailing_address, :phone_numbers, :emails)
 
   define_method(:initialize) do |parameters|
     @first_name = parameters.fetch(:first_name)
@@ -8,6 +8,7 @@ attr_accessor(:first_name, :last_name, :job_title, :company, :mailing_address, :
     @company = parameters.fetch(:company)
     @mailing_address = []
     @phone_numbers = []
+    @emails = []
   end
 
   define_method(:add_mailing) do |parameters|
@@ -24,8 +25,15 @@ attr_accessor(:first_name, :last_name, :job_title, :company, :mailing_address, :
     area_code = parameters.fetch(:area_code)
     number = parameters.fetch(:number)
     type = parameters.fetch(:type)
-    @phone_numbers.push({:area_code => "503", :number => '887-8899', :type => "home"})
+    @phone_numbers.push({:area_code => area_code, :number => number, :type => type})
   end
+
+  define_method(:add_email) do |parameters|
+    address = parameters.fetch(:address)
+    type = parameters.fetch(:type)
+    @emails.push({:address => address, :type => type})
+  end
+
 end
 
 

@@ -26,4 +26,11 @@ describe(Contact) do
 
     end
   end
+  describe("#add_email") do
+    it "add a new email number for the contact" do
+      test_contact = Contact.new({:first_name => "Colin", :last_name => "Farrell", :job_title => "Actor", :company => "Hollywood" })
+      test_contact.add_email({:address => "yoyoyo@bmail.com", :type => "work"})
+      expect(test_contact.emails[0].fetch(:type)).to(eq('work'))
+    end
+  end
 end
