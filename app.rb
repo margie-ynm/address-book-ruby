@@ -24,3 +24,9 @@ get('/contacts') do
   @contacts = Contact.all()
   erb(:contacts)
 end
+
+get('/contacts/:id') do
+  id = params.fetch('id').to_i
+  @contact = Contact.find(id)
+  erb(:contact)
+end

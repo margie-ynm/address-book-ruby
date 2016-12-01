@@ -33,4 +33,11 @@ describe(Contact) do
       expect(test_contact.emails[0].fetch(:type)).to(eq('work'))
     end
   end
+  describe(".find") do
+    it "will return the contact given an ID" do
+      test_contact = Contact.new({:first_name => "Colin", :last_name => "Farrell", :job_title => "Actor", :company => "Hollywood" })
+      test_contact.save()
+      expect(Contact.find(test_contact.id())).to(eq(test_contact))
+    end
+  end
 end

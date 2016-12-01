@@ -44,12 +44,24 @@ attr_accessor(:first_name, :last_name, :job_title, :company, :mailing_address, :
   define_singleton_method(:all) do
     @@contacts
   end
+
+  define_singleton_method(:find) do |id|
+    found = nil
+    @@contacts.each do |contact|
+      if contact.id == id
+        found = contact
+      end
+    end
+    found
+  end
+
 end
 
 
 
 # test_contact = Contact.new({:first_name => "Colin", :last_name => "Farrell", :job_title => "Actor", :company => "Hollywood" })
-# test_contact.add_mailing({:street => '123 Happy Lane', :city => 'Seattle', :state => 'Washington', :zip => '98234', :type => 'home' })
-# test_contact.add_mailing({:street => 'Another street', :city => 'Portland', :state => 'Oregon', :zip => '123123', :type => 'home' })
+# test_contact.save()
+# test_contact2 = Contact.new({:first_name => "2", :last_name => "2", :job_title => "2", :company => "2" })
+# test_contact2.save()
 #
-# p test_contact.mailing_address[1].fetch(:street)
+# p Contact.find(1)
