@@ -1,5 +1,5 @@
 class Contact
-attr_accessor(:first_name, :last_name, :job_title, :company, :mailing_address, :phone_numbers, :emails)
+attr_accessor(:first_name, :last_name, :job_title, :company, :mailing_address, :phone_numbers, :emails, :id)
 
   @@contacts =[]
 
@@ -11,6 +11,7 @@ attr_accessor(:first_name, :last_name, :job_title, :company, :mailing_address, :
     @mailing_address = []
     @phone_numbers = []
     @emails = []
+    @id = @@contacts.length().+(1)
   end
 
   define_method(:add_mailing) do |parameters|
@@ -40,6 +41,9 @@ attr_accessor(:first_name, :last_name, :job_title, :company, :mailing_address, :
     @@contacts.push(self)
   end
 
+  define_singleton_method(:all) do
+    @@contacts
+  end
 end
 
 

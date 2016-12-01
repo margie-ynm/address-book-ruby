@@ -21,10 +21,11 @@ describe("testing the site", {:type => :feature}) do
       expect(page).to have_content('Success')
     end
   end
-  # describe('/contacts') do
-  #   it "displays all contacts" do
-  #     visit('/')
-  #     click_link('All Contacts')
-  #   end
-  # end
+  describe('/contacts') do
+    it "displays all contacts" do
+      visit('/')
+      click_link('All Contacts')
+      expect(page).to have_content('Contact List')
+    end
+  end
 end
