@@ -1,6 +1,8 @@
 class Contact
 attr_accessor(:first_name, :last_name, :job_title, :company, :mailing_address, :phone_numbers, :emails)
 
+  @@contacts =[]
+
   define_method(:initialize) do |parameters|
     @first_name = parameters.fetch(:first_name)
     @last_name = parameters.fetch(:last_name)
@@ -32,6 +34,10 @@ attr_accessor(:first_name, :last_name, :job_title, :company, :mailing_address, :
     address = parameters.fetch(:address)
     type = parameters.fetch(:type)
     @emails.push({:address => address, :type => type})
+  end
+
+  define_method(:save) do
+    @@contacts.push(self)
   end
 
 end
